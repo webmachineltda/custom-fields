@@ -1,0 +1,48 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CustomFieldsSetupTables extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('custom_fields', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('table', 45);
+            $table->string('name', 45);
+            $table->enum('type', ['text', 'textarea', 'number', 'date', 'radio', 'checkbox', 'select'])->default('text');
+            $table->text('options')->nullable();
+            $table->text('attributes')->nullable();
+            $table->integer('order')->unsigned();
+            $table->string('validation_rules')->nullable();
+            $table->string('form_scope')->nullable();
+            $table->softDeletes();
+        });
+        
+        Schema::create('custom_field_values', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('custom_field_id')->unsigned();
+            $table->integer('record_id')->unsigned();
+            $table->text('value');
+            
+            $table->foreign('custom_field_id')->references('id')->on('custom_fields');
+        });        
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('custom_field_values');
+        Schema::drop('custom_fields');
+    }
+}

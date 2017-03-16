@@ -1,0 +1,29 @@
+{
+    "name": "webmachine/custom-fields",
+    "description": "CustomFields for Laravel 5",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["custom", "field", "laravel"],
+    "authors": [
+        {
+            "name": "WebMachine",
+            "email": "contacto@webmachine.cl"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "illuminate/database": "~5.0",
+        "illuminate/support": "~5.0",
+        "webmachine/form-field": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Webmachine\\CustomFields\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Webmachine\\CustomFields\\": "tests"
+        }
+    }  
+}
