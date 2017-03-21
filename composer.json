@@ -14,7 +14,7 @@
         "php": ">=5.5.0",
         "illuminate/database": "~5.0",
         "illuminate/support": "~5.0",
-        "webmachine/form-field": "dev-master"
+        "webmachine/form": "dev-master"
     },
     "autoload": {
         "psr-4": {

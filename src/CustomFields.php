@@ -2,7 +2,7 @@
 namespace Webmachine\CustomFields;
 
 use Illuminate\Support\Facades\DB;
-use Webmachine\FormField\FormFieldFacade as FormField;
+use Webmachine\Form\FormFacade as Form;
 
 class CustomFields {
 
@@ -23,11 +23,11 @@ class CustomFields {
             $attributes = empty($f->attributes)? ['label' => $f->name, 'id' => $id] : array_merge(['label' => $f->name, 'id' => $id], unserialize($f->attributes));
             
             if($f->type == 'text') {
-                $result .= FormField::text($name, $attributes);
+                $result .= Form::text($name, $attributes);
             } else if($f->type == 'textarea') {
-                $result .= FormField::textarea($name, $attributes);
+                $result .= Form::textarea($name, $attributes);
             } else if($f->type == 'select') {
-                $result .= FormField::select($name, unserialize($f->options), $attributes);
+                $result .= Form::select($name, unserialize($f->options), $attributes);
             }
         }
         return $result;
